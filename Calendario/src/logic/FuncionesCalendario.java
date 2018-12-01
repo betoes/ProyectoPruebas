@@ -1,21 +1,24 @@
 package logic;
 
+import dominio.Zodiaco;
+
 public class FuncionesCalendario {
+  private static final int NUMMESES = 0;
   /*  */
-  private static int ANIOANCLA = 2000;
+  private static final int ANIOANCLA = 2000;
   /* Sirve para calcular los numeros pares e impares de la funcion DiaSemana */
-  private static int PARIMPARANCLA = 2;
+  private static final int PARIMPARANCLA = 2;
   /* Se le resta al calculo de numeros pares para obtener el impar relativo */
-  private static int SUSIMPAR = 1;
+  private static final int SUSIMPAR = 1;
   /* Se aumenta en 1 el indice del arreglo meses para que se relacione con el mes indicado */
-  private static int RESMESES = 1;
+  private static final int RESMESES = 1;
 
-  private static String[] meses = {"enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
-      "agosto", "septiembre", "octubre", "noviembre", "diciembre"};
+  private static final String[] meses = {"enero", "febrero", "marzo", "abril", "mayo", "junio",
+      "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"};
 
-  private static int mesesDias[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+  private int mesesDias[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-  private static String[] dias =
+  private static final String[] dias =
       {"domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"};
 
   /*
@@ -66,8 +69,7 @@ public class FuncionesCalendario {
   }
 
   private int calcularDiscriminanteB(int anio) {
-
-    return (int) (Math.floor((anio % 100) / 4)) + (anio % 100);
+    return (int) ((anio % 100) / 4) + (anio % 100);
   }
 
   private int calcularDiscriminanteC(int anio, int mes) {
@@ -79,24 +81,29 @@ public class FuncionesCalendario {
     return 0;
   }
 
-  private String fechaSiguiente(int mes, int dia, int anio) {
-    String fechaSiguiente = "";
+  public String fechaSiguiente(int mes, int dia, int anio) {
 
+    final int AUMENTO = 1;
 
     if (esBisiesto(anio)) {
-      mesesDias[1] = 29;
+      mesesDias[1]++;
     }
 
-    if (meses[mes - RESMESES] >= (dia + AUMENTO)) {
-      resultado = mes + " - " + ++dia + " - " + anio;
+    if (mesesDias[mes - RESMESES] >= (dia + AUMENTO)) {
+      return mes + " - " + ++dia + " - " + anio;
     } else if (mes == NUMMESES && mesesDias[mes - RESMESES] < (dia + AUMENTO)) {
-      resultado = "1 - 1 - " + ++anio;
+      return "1 - 1 - " + ++anio;
     } else if (mesesDias[mes - RESMESES] < (dia + AUMENTO)) {
-      resultado = ++mes + " - 1 - " + anio;
+      return ++mes + " - 1 - " + anio;
     }
 
+    return "";
+  }
 
-    return fechaSiguiente;
+  public String signoZodiaco(int mes, int dia) {
+
+    return Zodiaco.obtenerSigno(mes, dia);
+
   }
 
   private boolean esBisiesto(int anio) {
