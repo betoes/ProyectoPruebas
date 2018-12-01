@@ -42,6 +42,7 @@ public class pantallaCalendarioControlador implements Initializable {
 
   public boolean validarFecha() {
 
+    FuncionesCalendario bisiesto = new FuncionesCalendario();
     boolean correcto = true;
 
     int dia = Integer.parseInt(txtDia.getText());
@@ -79,6 +80,15 @@ public class pantallaCalendarioControlador implements Initializable {
       alert.showAndWait();
       correcto = false;
 
+    } else if (dia == 29 && mes == 02 && bisiesto.esBisiesto(anio) == false) {
+
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Error");
+      alert.setHeaderText("Fecha no existente");
+      alert.setContentText("La fecha ingresada no existe");
+
+      alert.showAndWait();
+      correcto = false;
     }
 
     return correcto;
