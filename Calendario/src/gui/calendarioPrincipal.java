@@ -1,15 +1,27 @@
 package gui;
 
-import logic.FuncionesCalendario;
+import java.io.IOException;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class calendarioPrincipal {
+
+public class calendarioPrincipal extends Application {
+  @Override
+  public void start(Stage stage) throws IOException {
+
+    Parent root = FXMLLoader.load(getClass().getResource("pantallaCalendario.fxml"));
+
+    Scene scene = new Scene(root);
+
+    stage.setScene(scene);
+    stage.show();
+
+  }
+
   public static void main(String[] args) {
-    FuncionesCalendario funcionesC = new FuncionesCalendario();
-
-    System.out.println(funcionesC.DiaSemana(10, 10, 1997));
-
-    System.out.println(funcionesC.fechaSiguiente(10, 10, 1997));
-
-    System.out.println(funcionesC.signoZodiaco(11, 19));
+    launch(args);
   }
 }
