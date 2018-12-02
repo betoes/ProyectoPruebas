@@ -18,8 +18,8 @@ public class FuncionesCalendario {
 
   private int mesesDias[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-  private static final String[] dias = {"domingo", "lunes", "martes", "miercoles", "jueves",
-      "viernes", "sabado"};
+  private static final String[] dias =
+      {"domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"};
 
   /*
    * Son los valores que se le asignan a los meses en el metodo para calcular el nombre de un dia de
@@ -38,9 +38,8 @@ public class FuncionesCalendario {
     int discriminanteD = valorMeses[mes - RESMESES];
     int discriminanteE = dia;
 
-    int diaSemana =
-        calcularDiaSemana(discriminanteA + discriminanteB + discriminanteC + discriminanteD
-            + discriminanteE);
+    int diaSemana = calcularDiaSemana(
+        discriminanteA + discriminanteB + discriminanteC + discriminanteD + discriminanteE);
 
     return dias[diaSemana];
 
@@ -155,7 +154,7 @@ public class FuncionesCalendario {
 
   }
 
-  private boolean esBisiesto(int anio) {
+  public boolean esBisiesto(int anio) {
     if (anio % 4 == 0 && (anio % 100 != 0 || anio % 400 == 0)) {
       return true;
     }

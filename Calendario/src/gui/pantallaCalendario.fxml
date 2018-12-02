@@ -28,8 +28,8 @@
             <Button fx:id="bSiguienteDia" layoutX="30.0" layoutY="259.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Siguiente Dia" onAction="#diaSiguiente"/>
             <Button fx:id="bDiaSemana" layoutX="138.0" layoutY="259.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Dia semana" onAction="#DiaSemana" />
             <Button fx:id="bZodiaco" layoutX="248.0" layoutY="259.0" mnemonicParsing="false" text="Zodiaco" onAction="#zodiaco"/>
-            <Button fx:id="bMemorialDay" layoutX="325.0" layoutY="259.0" mnemonicParsing="false" text="Memorial Day" />
-            <Button fx:id="bViernes13" layoutX="431.0" layoutY="259.0" mnemonicParsing="false" text="Viernes 13" />
+            <Button fx:id="bMemorialDay" layoutX="325.0" layoutY="259.0" mnemonicParsing="false" text="Memorial Day" onAction="#memorialDay" />
+            <Button fx:id="bViernes13" layoutX="431.0" layoutY="259.0" mnemonicParsing="false" text="Viernes 13" onAction="#viernes13"/>
          </children>
       </AnchorPane>
    </children>

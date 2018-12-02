@@ -189,7 +189,55 @@ public class pantallaCalendarioControlador implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informacion");
         alert.setHeaderText("Zodiaco");
-        alert.setContentText("ETu zodiaco es" + fechaSiguiente.signoZodiaco(mes, dia));
+        alert.setContentText("Tu zodiaco es" + fechaSiguiente.signoZodiaco(mes, dia));
+
+        alert.showAndWait();
+      }
+    }
+
+  }
+
+  @FXML
+  public void memorialDay() {
+
+    FuncionesCalendario memorialDay = new FuncionesCalendario();
+
+    if (fechaVacia() == false) {
+      if (validarFecha() == true) {
+
+        int dia = Integer.parseInt(txtDia.getText());
+        int mes = Integer.parseInt(txtMes.getText());
+        int anio = Integer.parseInt(txtAnio.getText());
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informacion");
+        alert.setHeaderText("Memorial day");
+        alert.setContentText(
+            "El ultimo memorial day es: " + memorialDay.memorialDay(mes, dia, anio));
+
+        alert.showAndWait();
+      }
+    }
+
+  }
+
+  @FXML
+  public void viernes13() {
+
+    FuncionesCalendario viernesTrece = new FuncionesCalendario();
+
+    if (fechaVacia() == false) {
+      if (validarFecha() == true) {
+
+        int dia = Integer.parseInt(txtDia.getText());
+        int mes = Integer.parseInt(txtMes.getText());
+        int anio = Integer.parseInt(txtAnio.getText());
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informacion");
+        alert.setHeaderText("Viernes 13");
+        alert.setContentText(
+            "El ultimo viernes 13 es: " + viernesTrece.viernesTrece(mes, dia, anio));
 
         alert.showAndWait();
       }
