@@ -18,8 +18,8 @@ public class FuncionesCalendario {
 
   private int mesesDias[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-  private static final String[] dias =
-      {"domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"};
+  private static final String[] dias = {"domingo", "lunes", "martes", "miercoles", "jueves",
+      "viernes", "sabado"};
 
   /*
    * Son los valores que se le asignan a los meses en el metodo para calcular el nombre de un dia de
@@ -38,8 +38,9 @@ public class FuncionesCalendario {
     int discriminanteD = valorMeses[mes - RESMESES];
     int discriminanteE = dia;
 
-    int diaSemana = calcularDiaSemana(
-        discriminanteA + discriminanteB + discriminanteC + discriminanteD + discriminanteE);
+    int diaSemana =
+        calcularDiaSemana(discriminanteA + discriminanteB + discriminanteC + discriminanteD
+            + discriminanteE);
 
     return dias[diaSemana];
 
@@ -104,12 +105,61 @@ public class FuncionesCalendario {
 
     return Zodiaco.obtenerSigno(mes, dia);
 
+
   }
 
-  public boolean esBisiesto(int anio) {
+  public String memorialDay(int mes, int dia, int anio) {
+    final int mesMemorialDay = 5;
+    int ultimoLunes = 0;
+
+    if (mes > mesMemorialDay || (mes == mesMemorialDay && dia > 24)) {
+      ultimoLunes = ultimoLunesMayo(mesMemorialDay, mesesDias[mesMemorialDay - RESMESES], anio);
+
+      return ultimoLunes + " - " + mesMemorialDay + " - " + anio;
+    }
+    if (mes < mesMemorialDay || (mes == mesMemorialDay && dia <= 24)) {
+      ultimoLunes = ultimoLunesMayo(mesMemorialDay, mesesDias[mesMemorialDay - RESMESES], anio - 1);
+
+      return ultimoLunes + " - " + mesMemorialDay + " - " + (anio - 1);
+    }
+
+    return null;
+  }
+
+  public String viernesTrece(int mes, int dia, int anio) {
+    final int diaViernesTrece = 13;
+    while (!DiaSemana(mes, dia, anio).equals("viernes") || dia != diaViernesTrece) {
+      if (--dia == 0) {
+        if (--mes == 0) {
+          mes = 12;
+          dia = mesesDias[11];
+          anio--;
+        } else {
+          dia = mesesDias[mes - RESMESES];
+        }
+      }
+    }
+
+    return mes + " - " + dia + " - " + anio;
+  }
+
+  public int ultimoLunesMayo(int mesMemorialDay, int diasMes, int anioMemorialReciente) {
+
+    for (int i = diasMes; i > 24; i--) {
+      if (DiaSemana(mesMemorialDay, i, anioMemorialReciente).equals("lunes")) {
+        return i;
+      }
+    }
+
+    return 0;
+
+  }
+
+  private boolean esBisiesto(int anio) {
     if (anio % 4 == 0 && (anio % 100 != 0 || anio % 400 == 0)) {
       return true;
     }
     return false;
+
   }
 }
