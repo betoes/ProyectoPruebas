@@ -245,6 +245,13 @@ public class pantallaCalendarioControlador implements Initializable {
 
   }
 
+  @FXML
+  public void borrar() {
+    txtDia.setText("");
+    txtMes.setText("");
+    txtAnio.setText("");
+  }
+
   @Override
   public void initialize(URL arg0, ResourceBundle arg1) {
 
